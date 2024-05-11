@@ -34,7 +34,7 @@
 
 <section class="gallery">
     <img class="instagram" src="assets/instagram.svg" alt="instagram-icon" width="25" height="40">
-    <img class="image" src="assets/Mask-group-_3_.webp" alt="Image 1 description">
+    <img class="image" data-title="Who is the little shrimp" data-details="200 x 150cm, Oil on canvas, 2024" src="assets/Mask-group-_3_.webp" alt="Image 1 description">
     <img class="image" src="assets/Mask-group-_6_.webp" alt="Image 1 description">
     <img class="image" src="assets/Mask-group-_4_.webp" alt="Image 1 description">
     <img class="image" src="assets/Mask-group-_5_.webp" alt="Image 1 description">
@@ -47,6 +47,23 @@
     <img class="image" src="assets/Mask-group-_7_.webp" alt="Image 1 description">
     <img class="image" src="assets/Mask-group-_8_.webp" alt="Image 1 description">
 </section>
+
+<div class="popup">
+    <div class="popup-container">
+        <img class="popup-image" src="" alt="Popup Image">
+        <div class="popup-content">
+            <h2>“Who is the little shrimp”</h2>
+            <ul>
+                <li>200 x 150cm</li>
+                <li>Oil on canvas</li>
+                <li>2024</li>
+            </ul>
+            <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+            <span class="next" onclick="changeImage(1)">&#10095;</span>
+        </div>
+    </div>
+    <span class="close">&times;</span>
+</div>
 
 </body>
 
