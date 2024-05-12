@@ -88,20 +88,6 @@ body{
     }
 }
 
-@media only screen and (max-width: 500px) {
-    .sidebar{
-        width: 100%;
-        ul{
-            display: flex;
-            flex-flow: wrap;
-            gap: 10px;
-            font-size: 20px;
-            padding: 0px 20px;
-            margin-bottom: 20px;
-        }
-    }
-}
-
 
 .gallery{
     position: relative;
@@ -177,12 +163,13 @@ span.next {
     position: relative;
     display: grid;
     grid-template-columns: 2fr 8fr;
-    padding-bottom: 200px;
     max-width: 1200px;
     margin: auto;
+    padding: 0px 20px;
+    padding-bottom: 200px;
     .instagram{
         position: absolute;
-        right: 0;
+        right: 20px;
         top: -50px;
         cursor: pointer;
         img:hover{
@@ -191,31 +178,18 @@ span.next {
     }
 }
 
-@media only screen and (max-width: 800px) {
-    .gallery {
-        columns: 2;
-    }
-}
-
-
-@media only screen and (max-width: 500px) {
-    .gallery {
-        columns: 1;
-        margin: 0px 20px;
-        width: calc(100% - 40px);
-    }
-    .container-block {
-        grid-template-columns: 1fr;
-    }
-}
-
 
 .content-block{
     font-family: 'Quantico', sans-serif;
     display: grid;
-    grid-template-columns: 2fr 1fr;
     gap: 40px;
     width: 100%;
+    &.image-text{
+        grid-template-columns: 4fr 3fr;
+        .image{
+            width: inherit;
+        }
+    }
     h2{
         margin: 0px;
         margin-bottom: 20px;
@@ -234,4 +208,65 @@ span.next {
 
 .hidden {
     display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .gallery {
+        columns: 2;
+    }
+
+    .container-block {
+        grid-template-columns: 1fr;
+        padding-bottom: 20px;
+        .image-text{
+            grid-template-columns: 1fr;
+        }
+    }
+    .sidebar{
+        width: 100%;
+        position: sticky;
+        top: -1px;
+        padding-top: 20px;
+        z-index: 1;
+        background-color: white;
+        ul{
+            display: flex;
+            flex-flow: wrap;
+            gap: 10px;
+            font-size: 20px;
+            padding: 0px;
+            margin-bottom: 20px;
+        }
+    }
+    .container-block .instagram{
+        left: 20px; 
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .gallery {
+        columns: 1;
+    }
+
+}
+
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    li {
+        display: flex;
+        /* flex-flow: wrap; */
+        :first-child{
+            white-space: nowrap;
+         margin-right: 40px;
+        }
+        p{
+            margin: 0px;
+        }
+    }
 }
