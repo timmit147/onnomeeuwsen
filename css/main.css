@@ -58,6 +58,28 @@ body{
     }
 }
 
+@media only screen and (max-width: 800px) {
+    .hero-header-1{
+        .image{
+            content: url('../assets/hero-header-mobile-3.webp');
+            object-position: top;
+        }
+        .title{
+            top: 60%;
+            font-size: 90px;
+            left: 5vw;
+            width: 90vw;
+            text-align: center;
+            max-width: unset;
+        }
+        .indent {
+            margin-left: unset;
+        }
+    }
+}
+
+
+
 .sidebar{
     font-family: 'Quantico', sans-serif;
     float: left;
@@ -125,7 +147,7 @@ body{
     display: flex;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 80vw;
+    width: 70vw;
     max-width: 700px;
 }
 
@@ -147,6 +169,7 @@ body{
 }
 
 span.prev {
+    color: white;
     position: absolute;
     left: -30px;
     cursor: pointer;
@@ -155,6 +178,7 @@ span.prev {
 }
 
 span.next {
+    color: white;
     position: absolute;
     right: -30px;
     cursor: pointer;
