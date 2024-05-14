@@ -114,6 +114,7 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     overflow: auto;
+    font-family: 'Quantico', sans-serif;
 }
 
 .popup-container {
@@ -122,11 +123,21 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80vw;
+    max-width: 700px;
 }
 
-.popup-image {
-    max-width: 80%;
-    max-height: 80%;
+
+.popup-container img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.popup-container ul{
+    list-style: none;
+    padding-left: 0px;
 }
 
 .popup-content {
@@ -137,16 +148,18 @@ body{
 
 span.prev {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
+    left: -30px;
     cursor: pointer;
+    top: calc(50% - 15px);
+    font-size: 30px;
 }
 
 span.next {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    right: -30px;
     cursor: pointer;
+    top: calc(50% - 15px);
+    font-size: 30px;
 }
 
 .close {
@@ -165,11 +178,11 @@ span.next {
     grid-template-columns: 2fr 8fr;
     max-width: 1200px;
     margin: auto;
-    padding: 0px 20px;
+    margin: 0px 20px;
     padding-bottom: 200px;
     .instagram{
         position: absolute;
-        right: 20px;
+        right: 0px;
         top: -50px;
         cursor: pointer;
         img:hover{
@@ -239,14 +252,21 @@ span.next {
         }
     }
     .container-block .instagram{
-        left: 20px; 
+        left: 0px; 
     }
+
 }
 
 
 @media only screen and (max-width: 500px) {
     .gallery {
         columns: 1;
+    }
+
+    .popup-container {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+
     }
 
 }
