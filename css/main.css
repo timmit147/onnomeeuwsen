@@ -94,6 +94,7 @@ body{
     }
     li{
         font-weight: normal;
+        min-width: 150px;
         a{
             color: black;
             text-decoration: none;
@@ -221,6 +222,7 @@ span.next {
     display: grid;
     gap: 40px;
     width: 100%;
+    min-height: 500px;
     &.image-text{
         grid-template-columns: 4fr 3fr;
         .image{
@@ -278,11 +280,17 @@ span.next {
     .container-block .instagram{
         left: 0px; 
     }
+    .sidebar li{
+        min-width: unset;
+    }
 
 }
 
 
 @media only screen and (max-width: 500px) {
+    .content-block{
+        min-height: unset;
+    }
     .gallery {
         columns: 1;
     }
