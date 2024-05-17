@@ -115,13 +115,13 @@ body {
 }
 
 .sidebar li:hover {
-    color: #B29521;
+    color: #85701c;
     font-weight: 700;
     cursor: pointer;
 }
 
 .sidebar .active a {
-    color: #B29521;
+    color: #85701c;
     font-weight: bold;
 }
 
