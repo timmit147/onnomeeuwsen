@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const popup = document.querySelector('.popup');
     const popupImage = document.querySelector('.popup-image');
     const popupTitle = popup.querySelector('h2'); 
+    const popupText = popup.querySelector('ul'); 
     const closeBtn = document.querySelector('.close');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
@@ -35,7 +36,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function set_text(image) {
         popupTitle.innerText = image.dataset.title;
+        const imageContent = image.dataset.details;
+        const ul = document.createElement('ul'); // Create a new ul element
+    
+        if (imageContent) {
+            imageContent.split(', ').forEach(item => { // Split the imageContent string
+                const li = document.createElement('li'); // Create a new li element for each item
+                li.innerText = item; // Set the text content of the li
+                ul.appendChild(li); // Append the li to the ul
+            });
+        }
+    
+        // Clear previous content and append the new ul to popupText
+        popupText.innerHTML = ''; // Clear previous content
+        popupText.appendChild(ul); // Append the new ul to popupText
     }
+    
+    
 
     function setCurrentImageIndex(image) {
         currentImageIndex = Array.from(galleryImages).indexOf(image);
