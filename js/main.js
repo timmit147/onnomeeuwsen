@@ -14,38 +14,78 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const galleryImages = document.querySelectorAll('.gallery .image');
+    let galleryImages = document.querySelectorAll('.gallery .image');
     const popup = document.querySelector('.popup');
     const popupImage = document.querySelector('.popup-image');
+    const popupTitle = popup.querySelector('h2'); 
     const closeBtn = document.querySelector('.close');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
     let currentImageIndex = 0;
 
-    function displayPopup(imageSrc) {
+    function displayPopup(imageSrc, image) {
+        const index = Array.from(galleryImages).indexOf(image) + 1; 
+        const position = getPosition(image);
+        console.log(`Clicked image position: ${position}, Index: ${index}`);
         popupImage.src = imageSrc;
         popup.style.display = 'block';
-        setCurrentImageIndex(imageSrc);
+        setCurrentImageIndex(image);
+        set_text(image);
     }
 
-    function setCurrentImageIndex(imageSrc) {
-        galleryImages.forEach((image, index) => {
-            if (image.getAttribute('src') === imageSrc) {
-                currentImageIndex = index;
-            }
-        });
+    function set_text(image) {
+        popupTitle.innerText = image.dataset.title;
+    }
+
+    function setCurrentImageIndex(image) {
+        currentImageIndex = Array.from(galleryImages).indexOf(image);
     }
 
     function changeImage(direction) {
         currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
-        const newImageSrc = galleryImages[currentImageIndex].getAttribute('src');
+        const newImage = galleryImages[currentImageIndex];
+        const newImageSrc = newImage.getAttribute('src');
         popupImage.src = newImageSrc;
+        set_text(newImage);
+    }
+
+    function getPosition(image) {
+        const rect = image.getBoundingClientRect();
+        const x = rect.left + window.scrollX;
+        const y = rect.top + window.scrollY;
+        return { x, y };
+    }
+
+    function sortByPosition(images) {
+        return Array.from(images).sort((a, b) => {
+            const aRect = a.getBoundingClientRect();
+            const bRect = b.getBoundingClientRect();
+            if (aRect.top !== bRect.top) {
+                return aRect.top - bRect.top;
+            } else {
+                return aRect.left - bRect.left;
+            }
+        });
+    }
+
+    function handleImageLoad(image, callback) {
+        if (image.complete) {
+            callback();
+        } else {
+            image.addEventListener('load', callback);
+        }
     }
 
     galleryImages.forEach(function(image) {
+        handleImageLoad(image, function() {
+            galleryImages = sortByPosition(galleryImages);
+        });
+
         image.addEventListener('click', function() {
-            const imageSrc = image.getAttribute('src');
-            displayPopup(imageSrc);
+            handleImageLoad(image, function() {
+                const imageSrc = image.getAttribute('src');
+                displayPopup(imageSrc, image);
+            });
         });
     });
 
@@ -76,7 +116,10 @@ document.addEventListener('DOMContentLoaded', function() {
             changeImage(1);
         }
     });
+
 });
+
+
 
 
 
