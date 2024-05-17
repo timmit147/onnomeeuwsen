@@ -156,31 +156,32 @@ body {
 .gallery {
     position: relative;
     gap: 10px;
-    margin-right: 40px;
     box-sizing: border-box;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-
 .gallery .col{
-    width: calc((100% / 3) - 10px);
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+img.image {
+    width: 100%;
+}
+
 
 @media only screen and (max-width: 800px) {
-    .gallery {
-        columns: 2;
+    .gallery{
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .gallery {
-        columns: 1;
+    .gallery{
+        grid-template-columns: 1fr;
     }
 }
 
