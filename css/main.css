@@ -299,7 +299,7 @@ body {
     max-width: 1200px;
     margin: auto;
     padding: 0px 20px;
-    padding-bottom: 200px;
+    padding-bottom: 100px;
 }
 
 .container-block  .hidden {
@@ -341,7 +341,6 @@ body {
     display: grid;
     gap: 40px;
     width: 100%;
-    min-height: 500px;
 }
 
 .content-block.image-text {
@@ -408,3 +407,20 @@ body {
 }
 
 /* timeline end */
+
+/* Footer start */
+
+footer {
+    padding: 20px;
+    font-size: 14px;
+    text-align: right;
+    font-family: 'Quantico';
+}
+
+@media only screen and (max-width: 800px) {
+    footer {
+        text-align: left;
+    }
+}
+
+/* Footer end */
