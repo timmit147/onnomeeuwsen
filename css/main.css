@@ -232,8 +232,8 @@ body {
 
 .popup span.prev {
     color: white;
-    position: absolute;
-    left: -30px;
+    position: fixed;
+    left: 30px;
     cursor: pointer;
     top: calc(50% - 15px);
     font-size: 30px;
@@ -241,8 +241,8 @@ body {
 
 .popup span.next {
     color: white;
-    position: absolute;
-    right: -30px;
+    position: fixed;
+    right: 30px;
     cursor: pointer;
     top: calc(50% - 15px);
     font-size: 30px;
@@ -258,7 +258,14 @@ body {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
+.popup .popup-container{
+    height: 60vh;
+}
+
+}
+
+@media only screen and (max-width: 700px) {
     .popup .popup-container {
         grid-template-columns: 1fr;
         height: unset;
