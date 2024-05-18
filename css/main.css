@@ -272,6 +272,7 @@ body {
         overflow: unset;
         display: flex;
     flex-direction: column;
+    width: 60%;
     }
 
     .popup .popup-content{
