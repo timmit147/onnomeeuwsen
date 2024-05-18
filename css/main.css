@@ -212,11 +212,13 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 90vh;
+    overflow: hidden;
 }
 
 .popup .popup-container img {
     object-fit: contain;
-    height: 100%;
+    height: unset;
+    width: 100%;
 }
 
 .popup .popup-container ul {
@@ -261,8 +263,14 @@ body {
 
 @media only screen and (max-width: 500px) {
     .popup .popup-container {
+        display: unset;
         grid-template-columns: 1fr;
-        max-width: 300px;
+        height: unset;
+        overflow: unset;
+    }
+
+    .popup .popup-content{
+        min-width: unset;
     }
 }
 
