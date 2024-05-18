@@ -43,7 +43,7 @@ body {
     top: 50px;
     left: 35%;
     margin-block-start: 0;
-    font-size: 14vw;
+    font-size: 140px;
     line-height: 1em;
     max-width: 500px;
     font-family: 'Bebas Neue', sans-serif;
@@ -52,6 +52,7 @@ body {
 
 .hero-header-1 .indent {
     margin-left: 100px;
+    font-size: 90px;
 }
 
 .hero-header-1 .angle-down {
@@ -75,15 +76,17 @@ body {
 
     .hero-header-1 .title {
         top: 60%;
-        font-size: 90px;
+        font-size: 120px;
         left: 5vw;
         width: 90vw;
         text-align: center;
         max-width: unset;
+        line-height: 1;
     }
 
     .hero-header-1 .indent {
         margin-left: unset;
+        font-size: 90px;
     }
 }
 
@@ -228,6 +231,7 @@ body {
     padding: 20px;
     position: relative;
     min-width: 300px;
+    padding-top: 0px;
 }
 
 .popup span.prev {
@@ -272,7 +276,8 @@ body {
         overflow: unset;
         display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 50%;
+    min-width: 250px;
     }
 
     .popup .popup-content{
