@@ -368,13 +368,19 @@ img.image {
     display: flex;
 }
 
-.timeline li:first-child {
+.timeline li p:first-child {
     white-space: nowrap;
     margin-right: 40px;
 }
 
 .timeline li p {
     margin: 0px;
+}
+
+@media only screen and (max-width: 500px) {
+    .timeline li p:first-child {
+        margin-right: 20px;
+    }
 }
 
 /* timeline end */
