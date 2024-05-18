@@ -32,7 +32,9 @@ body {
 .hero-header-1 .image {
     width: 100%;
     height: 100vh;
+    display: block;
     object-fit: cover;
+    background-color: black;
 }
 
 .hero-header-1 .title {
@@ -168,7 +170,7 @@ body {
     gap: 10px;
 }
 
-img.image {
+.gallery .image {
     width: 100%;
 }
 
