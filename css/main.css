@@ -69,7 +69,7 @@ body {
 
 @media only screen and (max-width: 800px) {
     .hero-header-1 .image {
-        content: url('../assets/hero-header-mobile-3.webp');
+        content: url('../assets/hero-header-mobile.webp');
         object-position: top;
     }
 
