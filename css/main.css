@@ -209,16 +209,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     height: 90vh;
-    overflow: hidden;
 }
 
 .popup .popup-container img {
     object-fit: contain;
-    height: unset;
-    width: 100%;
+    height: 100%;
 }
 
 .popup .popup-container ul {
@@ -261,16 +258,20 @@ body {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
     .popup .popup-container {
-        display: unset;
         grid-template-columns: 1fr;
         height: unset;
         overflow: unset;
+        display: flex;
+    flex-direction: column;
     }
 
     .popup .popup-content{
         min-width: unset;
+    }
+    .popup .popup-container img{
+        width: 100%;
     }
 }
 
