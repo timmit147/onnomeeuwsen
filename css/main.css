@@ -286,7 +286,7 @@ body {
 
 .container-block .instagram {
     position: absolute;
-    right: 0px;
+    right: 20px;
     top: -50px;
     cursor: pointer;
 }
