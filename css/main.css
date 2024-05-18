@@ -211,13 +211,12 @@ body {
     transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 70vw;
-    max-width: 700px;
+    height: 90vh;
 }
 
 .popup .popup-container img {
-    width: 100%;
     object-fit: contain;
+    height: 100%;
 }
 
 .popup .popup-container ul {
@@ -229,6 +228,7 @@ body {
     background-color: white;
     padding: 20px;
     position: relative;
+    min-width: 300px;
 }
 
 .popup span.prev {
