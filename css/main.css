@@ -167,11 +167,6 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.gallery .col{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
 .gallery .image {
     width: 100%;

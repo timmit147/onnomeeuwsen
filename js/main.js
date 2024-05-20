@@ -13,6 +13,92 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.sidebar ul li a');
+    const contentBlocks = document.querySelectorAll('.container-block section');
+
+    function showContent(id) {
+        contentBlocks.forEach(block => {
+            if (block.id === id) {
+                block.classList.remove('hidden');
+            } else {
+                block.classList.add('hidden');
+            }
+        });
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href').slice(1) === id) {
+                link.parentElement.classList.add('active');
+            } else {
+                link.parentElement.classList.remove('active');
+            }
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').slice(1);
+            showContent(targetId);
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('.gallery .image');
+    const gap = 10; // Set the desired gap value in pixels
+    let imagesLoaded = 0;
+
+    images.forEach(image => {
+        image.addEventListener('load', () => {
+            imagesLoaded++;
+            if (imagesLoaded === images.length) {
+                adjustMargins();
+            }
+        });
+
+        // Ensure we account for cached images
+        if (image.complete) {
+            imagesLoaded++;
+        }
+    });
+
+    // If all images are already loaded from cache
+    if (imagesLoaded === images.length) {
+        adjustMargins();
+    }
+
+    function adjustMargins() {
+        const viewportWidth = window.innerWidth;
+
+        images.forEach((image, index) => {
+            let numColumns = 3; // Default to 3 columns
+            if (viewportWidth <= 800) {
+                numColumns = 2; // Change to 2 columns for viewport width <= 800px
+            }
+            if (viewportWidth <= 500) {
+                return; // Do nothing for viewport width <= 500px
+            }
+
+            if (index + numColumns < images.length) {
+                const currentBottom = image.getBoundingClientRect().bottom;
+                const nextTop = images[index + numColumns].getBoundingClientRect().top;
+
+                const difference = nextTop - currentBottom;
+
+                // Adjust margin-top for the next row, including the gap
+                if (difference !== gap) {
+                    images[index + numColumns].style.marginTop = `${gap - difference}px`;
+                }
+            }
+        });
+    }
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     let galleryImages = document.querySelectorAll('.gallery .image');
     const popup = document.querySelector('.popup');
@@ -135,39 +221,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.sidebar ul li a');
-    const contentBlocks = document.querySelectorAll('.container-block section');
-
-    function showContent(id) {
-        contentBlocks.forEach(block => {
-            if (block.id === id) {
-                block.classList.remove('hidden');
-            } else {
-                block.classList.add('hidden');
-            }
-        });
-
-        navLinks.forEach(link => {
-            if (link.getAttribute('href').slice(1) === id) {
-                link.parentElement.classList.add('active');
-            } else {
-                link.parentElement.classList.remove('active');
-            }
-        });
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').slice(1);
-            showContent(targetId);
-        });
-    });
-});
-
