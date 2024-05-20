@@ -232,7 +232,7 @@ body {
 .popup span.prev {
     color: white;
     position: fixed;
-    left: 30px;
+    left: 20px;
     cursor: pointer;
     top: calc(50% - 15px);
     font-size: 30px;
@@ -241,7 +241,7 @@ body {
 .popup span.next {
     color: white;
     position: fixed;
-    right: 30px;
+    right: 20px;
     cursor: pointer;
     top: calc(50% - 15px);
     font-size: 30px;
@@ -249,8 +249,8 @@ body {
 
 .popup .close {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     color: #fff;
     font-size: 30px;
     font-weight: bold;
