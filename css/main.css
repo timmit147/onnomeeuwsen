@@ -88,6 +88,7 @@ body {
         text-align: center;
         max-width: unset;
         line-height: 1;
+        left: 5vw;
     }
 
     .hero-header-1 .indent {
