@@ -28,7 +28,6 @@ body {
     height: 100vh;
     display: block;
     object-fit: cover;
-    background-color: black;
     object-position: right;
 }
 
