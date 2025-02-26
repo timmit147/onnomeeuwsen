@@ -42,6 +42,8 @@ body {
     font-size: 60px;
     font-family: 'Futura';
     display: flex;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .hero-header-1 .indent {
