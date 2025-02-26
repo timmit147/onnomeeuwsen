@@ -28,7 +28,7 @@ body {
     height: 100vh;
     display: block;
     object-fit: cover;
-    object-position: right;
+    object-position: top right;
 }
 
 .hero-header-1 .title-wrapper {
