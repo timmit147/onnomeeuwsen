@@ -328,6 +328,10 @@ body {
     width: 100%;
 }
 
+.content-block-title{
+    color: #C90725;
+}
+
 .content-block.image-text {
     grid-template-columns: 4fr 3fr;
 }
