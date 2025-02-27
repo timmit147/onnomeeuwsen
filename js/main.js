@@ -47,55 +47,61 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const images = document.querySelectorAll('.gallery .image');
-    const gap = 10; // Set the desired gap value in pixels
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".gallery .image");
+    const gap = 10;
     let imagesLoaded = 0;
 
-    images.forEach(image => {
-        image.addEventListener('load', () => {
+    images.forEach((image) => {
+        image.addEventListener("load", () => {
             imagesLoaded++;
             if (imagesLoaded === images.length) {
-                adjustMargins();
+                setTimeout(adjustMargins, 0);
             }
         });
 
-        // Ensure we account for cached images
         if (image.complete) {
             imagesLoaded++;
         }
     });
 
-    // If all images are already loaded from cache
     if (imagesLoaded === images.length) {
-        adjustMargins();
+        setTimeout(adjustMargins, 0);
     }
 
     function adjustMargins() {
-        const viewportWidth = window.innerWidth;
+        requestAnimationFrame(() => {
+            const viewportWidth = window.innerWidth;
 
-        images.forEach((image, index) => {
-            let numColumns = 3; // Default to 3 columns
-            if (viewportWidth <= 800) {
-                numColumns = 2; // Change to 2 columns for viewport width <= 800px
-            }
-            if (viewportWidth <= 500) {
-                return; // Do nothing for viewport width <= 500px
-            }
+            images.forEach((image) => {
+                image.style.marginTop = "";
+            });
 
-            if (index + numColumns < images.length) {
-                const currentBottom = image.getBoundingClientRect().bottom;
-                const nextTop = images[index + numColumns].getBoundingClientRect().top;
+            let numColumns = 3;
+            if (viewportWidth <= 800) numColumns = 2;
+            if (viewportWidth <= 500) return;
 
-                const difference = nextTop - currentBottom;
+            images.forEach((image, index) => {
+                if (index + numColumns < images.length) {
+                    const currentImage = images[index];
+                    const nextRowImage = images[index + numColumns];
 
-                // Adjust margin-top for the next row, including the gap
-                if (difference !== gap) {
-                    images[index + numColumns].style.marginTop = `${gap - difference}px`;
+                    const currentBottom = currentImage.getBoundingClientRect().bottom;
+                    const nextTop = nextRowImage.getBoundingClientRect().top;
+
+                    const difference = nextTop - currentBottom;
+
+                    if (difference !== gap) {
+                        nextRowImage.style.marginTop = `${gap - difference}px`;
+                    }
                 }
-            }
+            });
         });
     }
+
+    window.addEventListener("resize", () => {
+        setTimeout(adjustMargins, 100);
+    });
 });
 
 
