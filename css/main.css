@@ -28,7 +28,7 @@ body {
     height: 100vh;
     display: block;
     object-fit: cover;
-    object-position: top right;
+    object-position: 70% 0%;
 }
 
 .hero-header-1 .title-wrapper {
@@ -67,6 +67,13 @@ body {
     }
     .hero-header-1 .title-wrapper{
         margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .hero-header-1 .image {
+        content: url('../assets/hero-header-mobile.webp');
+        object-position: top;
     }
 }
 
