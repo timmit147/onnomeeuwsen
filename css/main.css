@@ -379,6 +379,7 @@ body {
 .timeline li p:first-child {
     white-space: nowrap;
     margin-right: 40px;
+    min-width: 85px;
 }
 
 .timeline li p {
