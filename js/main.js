@@ -15,36 +15,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.sidebar ul li a');
-    const contentBlocks = document.querySelectorAll('.container-block section');
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".gallery .image");
+    const gap = 10;
+    let imagesLoaded = 0;
 
-    function showContent(id) {
-        contentBlocks.forEach(block => {
-            if (block.id === id) {
-                block.classList.remove('hidden');
-            } else {
-                block.classList.add('hidden');
+    images.forEach((image) => {
+        image.addEventListener("load", () => {
+            imagesLoaded++;
+            if (imagesLoaded === images.length) {
+                setTimeout(adjustMargins, 0);
             }
         });
 
-        navLinks.forEach(link => {
-            if (link.getAttribute('href').slice(1) === id) {
-                link.parentElement.classList.add('active');
-            } else {
-                link.parentElement.classList.remove('active');
-            }
+        if (image.complete) {
+            imagesLoaded++;
+        }
+    });
+
+    if (imagesLoaded === images.length) {
+        setTimeout(adjustMargins, 0);
+    }
+
+    function adjustMargins() {
+        requestAnimationFrame(() => {
+            const viewportWidth = window.innerWidth;
+
+            images.forEach((image) => {
+                image.style.marginTop = "";
+            });
+
+            let numColumns = 3;
+            if (viewportWidth <= 800) numColumns = 2;
+            if (viewportWidth <= 500) return;
+
+            images.forEach((image, index) => {
+                if (index + numColumns < images.length) {
+                    const currentImage = images[index];
+                    const nextRowImage = images[index + numColumns];
+
+                    const currentBottom = currentImage.getBoundingClientRect().bottom;
+                    const nextTop = nextRowImage.getBoundingClientRect().top;
+
+                    const difference = nextTop - currentBottom;
+
+                    if (difference !== gap) {
+                        nextRowImage.style.marginTop = `${gap - difference}px`;
+                    }
+                }
+            });
         });
     }
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').slice(1);
-            showContent(targetId);
-        });
+    window.addEventListener("resize", () => {
+        setTimeout(adjustMargins, 100);
     });
 });
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
