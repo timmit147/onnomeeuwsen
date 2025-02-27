@@ -351,8 +351,20 @@ body {
 }
 
 .content-block a {
-    color: #000;
+    color: #c90725;
     line-height: 1.8em;
+    text-decoration: none;
+    position: relative;
+}
+
+.content-block a:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    background-color: #c907254a;
+    height: 1px;
+    left: 0;
+    bottom: 3px;
 }
 
 @media only screen and (max-width: 500px) {
